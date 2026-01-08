@@ -1,3 +1,13 @@
+# Python Ver:   3.11.7
+#
+# Author:       Nathaniel Hill
+#
+# Purpose:      Phonebook Demo. Demonstrating OOP, Tkinter GUI module,
+#               using Tkinter Parent and Child relationships.
+#
+# Tested OS:    This code was written and tested to work with Windows 11.
+
+
 from tkinter import *
 import tkinter as tk
 from tkinter import messagebox

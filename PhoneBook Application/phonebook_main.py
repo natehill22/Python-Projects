@@ -7,6 +7,7 @@
 #
 # Tested OS:    This code was written and tested to work with Windows 11.
 
+
 from tkinter import *
 import tkinter as tk
 from tkinter import messagebox
@@ -43,8 +44,3 @@ if __name__ == "__main__":
     root = tk.Tk()
     App = ParentWindow(root)
     root.mainloop()
-
-#add email validations to update function
-#update validations for phone number (to add and update)
-#add pre-title text
-
