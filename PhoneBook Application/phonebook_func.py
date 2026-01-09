@@ -109,7 +109,7 @@ def addToList(self):
     var_phone = self.txt_phone.get().strip()
     phoneValPattern = r"^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$" #Regex used for phone number validations
     var_email = self.txt_email.get().strip()
-    if not "@" or not "." in var_email: #Format validations for email address
+    if not "@" in var_email or not "." in var_email: #Format validations for email address
         messagebox.showerror("Email Format Error","'{}' is in the incorrect format. Next time use an '@' symbol and a '.' followed by a domain name.".format(var_email))
         var_email = ""
     if not re.match(phoneValPattern, var_phone): #Format validations for phone number
@@ -206,12 +206,18 @@ def onUpdate(self):
     var_phone = self.txt_phone.get().strip() #Normalizes the data to maintain database integrity
     var_email = self.txt_email.get().strip()
     phoneValPattern = r"^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$" #Regex used for phone number validations
-    if not "@" or not "." in var_email: #Format validations for email address
+    if not "@" in var_email or not "." in var_email: #Format validations for email address
         messagebox.showerror("Email Format Error","'{}' is in the incorrect format. Next time use an '@' symbol and a '.' followed by a domain name.".format(var_email))
         var_email = ""
+        index = self.lstList1.curselection()[0] #Clears Listbox selection
+        self.lstList1.delete(index)
+        onRefresh(self) #Refreshes the Listbox list
     if not re.match(phoneValPattern, var_phone): #Format validations for phone number
         messagebox.showerror("Phone Format Error","'{}' is in the incorrect format. Next time use conventional phone number format.".format(var_phone))
         var_phone = ""
+        index = self.lstList1.curselection()[0] #Clears Listbox selection
+        self.lstList1.delete(index)
+        onRefresh(self) #Refreshes the Listbox list
     if (len(var_phone) > 0) and (len(var_email) > 0): #Ensures there is data present
         conn = sqlite3.connect('phonebook.db')
         with conn:

@@ -18,10 +18,7 @@ class ParentWindow(Frame):
         #This CenterWindow method will center our app on the user's screen
         center_window(self,800,350)
         self.master.title("Student Tracking")
-        self.master.config(bg="#F0F0F0")
-        #This protocol method is a tkinter built-in method to catch if the
-        #user clicks the upper corner, "X" on Windows OS.
-        self.master.protocol("WM_DELETE_WINDOW")
+        self.master.config(bg="#F0F0F0") #Sets the background color
         arg = self.master
         load_gui(self)
 
@@ -37,7 +34,7 @@ def center_window(self, w, h): #Passes in the tkinter frame (master) reference a
 
 
 def load_gui(self):
-
+    #Sets the type, text, and location of all labels within the grid
     self.lbl_fname = tk.Label(self.master,text='First Name:')
     self.lbl_fname.grid(row=0,column=0,padx=(27, 0),pady=(10,0),sticky=N+W)
     self.lbl_lname = tk.Label(self.master,text='Last Name:')
@@ -51,6 +48,7 @@ def load_gui(self):
     self.lbl_studentList = tk.Label(self.master,text='Student List:')
     self.lbl_studentList.grid(row=0,column=2,padx=(0, 0),pady=(10,0),sticky=N+W)
 
+    #Sets the type, (lack of) text, and location of all text boxes within the grid
     self.txt_fname = tk.Entry(self.master,text='')
     self.txt_fname.grid(row=1,column=0,rowspan=1,columnspan=2,padx=(30, 40),pady=(0,0),sticky=N+E+W)
     self.txt_lname = tk.Entry(self.master,text='')
@@ -62,23 +60,23 @@ def load_gui(self):
     self.txt_ccourse = tk.Entry(self.master,text='')
     self.txt_ccourse.grid(row=9,column=0,rowspan=1,columnspan=2,padx=(30, 40),pady=(0,0),sticky=N+E+W)
 
-
-    #Define the listbox with a scrollbar and grid theme
+    #Defines the listbox and scrollbar and their locations within the grid
     self.scrollbar1 = Scrollbar(self.master,orient=VERTICAL)
-    self.lstList1 = Listbox(self.master,exportselection=0,yscrollcommand=self.scrollbar1.set, width=90)
+    self.lstList1 = Listbox(self.master,exportselection=0,yscrollcommand=self.scrollbar1.set,width=90)
     self.lstList1.bind('<<ListboxSelect>>',lambda event: onSelect(self,event))
     self.scrollbar1.config(command=self.lstList1.yview)
     self.scrollbar1.grid(row=1,column=8,rowspan=10,columnspan=1,padx=(0,0),pady=(0,0),sticky=N+E+S)
     self.lstList1.grid(row=1,column=2,rowspan=10,columnspan=6,padx=(0,0),pady=(0,0),sticky=N+E+S+W)
 
+    #Creates the Submit and Delete buttons and sets their locations (and ties them to their function definitions) 
     self.btn_submit = tk.Button(self.master,width=12,height=2,text='Submit',command=lambda: addToList(self))
     self.btn_submit.grid(row=12,column=0,padx=(25,0),pady=(45,10),sticky=W)
     self.btn_delete = tk.Button(self.master,width=12,height=2,text='Delete',command=lambda: onDelete(self))
     self.btn_delete.grid(row=12,column=7,padx=(15,0),pady=(45,10),sticky=W)
-    create_db(self)
-    onRefresh(self)
+    create_db(self) #Calls the function to create the database (if it doesn't already exist)
+    onRefresh(self) #Calls the function to populate the database (and Tkinter Frame) if it the db already has existing data
 
-def create_db(self):
+def create_db(self): #Creates the database (and db table) if it doesn't already exist
     conn = sqlite3.connect('student_list.db')
     with conn:
         cur = conn.cursor()
@@ -94,37 +92,38 @@ def create_db(self):
         #Commits so that changes are saved and closes the database connection
         conn.commit()
     conn.close()
-    first_run(self)
+    first_run(self) #Calls the function to preload the database table with a default user
 
 
-def first_run(self):
+def first_run(self): #Preloads the database table with a default user to avoid an empty database table
     conn = sqlite3.connect('student_list.db')
     with conn:
         cur = conn.cursor()
-        cur,count = count_records(cur)
+        cur,count = count_records(cur) #Calls the function to get the count of records from the database table. This is then used to determine the state of conditional logic
         if count < 1:
             cur.execute("""INSERT INTO tbl_studentList (col_fname,col_lname,col_fullname,col_phone,col_email,col_course) VALUES (?,?,?,?,?,?)""", ("John", "Doe", "John Doe", "111-111-1111", "jdoe@email.com", "Philosophy"))
             conn.commit()
     conn.close()
 
 
-def count_records(cur):
+def count_records(cur): #Geta the count of records from the database table
     count = ""
     cur.execute("""SELECT COUNT(*) FROM tbl_studentList""")
     count = cur.fetchone()[0]
     return cur,count
 
 
-#Selects items in ListBox
+#Selects items in the ListBox
 def onSelect(self, event):
     #Calling the event is the self.lstList1 widget
     varList = event.widget
     select = varList.curselection()[0]
     value = varList.get(select)
+    print(value)
     conn = sqlite3.connect('student_list.db')
     with conn:
         cursor = conn.cursor()
-        cursor.execute("""SELECT col_fname, col_lname, col_phone, col_email, col_course FROM tbl_studentList WHERE col_fullname = (?)""", [value])
+        cursor.execute("""SELECT col_fname, col_lname, col_phone, col_email, col_course FROM tbl_studentList WHERE col_fullname || ', ' || col_phone || ', ' || col_email || ', ' || col_course = (?)""", [value]) #Condition exacly matches the SQL call in onRefresh to exactly match the value
         varBody = cursor.fetchall()
         #Returns a tuple that we can slice into 4 parts using data[] during the iteration
         for data in varBody:
@@ -139,7 +138,7 @@ def onSelect(self, event):
             self.txt_ccourse.delete(0, END)
             self.txt_ccourse.insert(0, data[4])
 
-def addToList(self):
+def addToList(self): #Adds users to the database when all their data is input correctly
     var_fname = self.txt_fname.get()
     var_lname = self.txt_lname.get()
     var_course = self.txt_ccourse.get()
@@ -152,7 +151,7 @@ def addToList(self):
     var_phone = self.txt_phone.get().strip()
     phoneValPattern = r"^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$" #Regex used for phone number validations
     var_email = self.txt_email.get().strip()
-    if not "@" or not "." in var_email: #Format validations for email address
+    if not "@" in var_email or not "." in var_email: #Format validations for email address
         messagebox.showerror("Email Format Error","'{}' is in the incorrect format. Next time use an '@' symbol and a '.' followed by a domain name.".format(var_email))
         var_email = ""
     if not re.match(phoneValPattern, var_phone): #Format validations for phone number
@@ -179,7 +178,7 @@ def addToList(self):
         messagebox.showerror("Text Field Error", "Please ensure that there is properly formatted data in all four fields.")
 
 
-def onDelete(self):
+def onDelete(self): #Implements a check to protect against deleting the last user, otherwise deletes the last user
     var_select = self.lstList1.get(self.lstList1.curselection()) #Listbox's selected value
     conn = sqlite3.connect('student_list.db')
     with conn:
@@ -201,7 +200,7 @@ def onDelete(self):
             confirm = messagebox.showerror("Last Record Error","({}) is the last record in the database and cannot be deleted at this time. \n\nPlease add another record first in order to delete ({}).".format(var_select, var_select))
     conn.close()
 
-def onDeleted(self):
+def onDeleted(self): #Clears all textboxes and selected ListBox index
     #Clears the text in all textboxes
     self.txt_fname.delete(0,END)
     self.txt_lname.delete(0,END)
@@ -215,7 +214,7 @@ def onDeleted(self):
     except IndexError:
         pass
 
-def onClear(self):
+def onClear(self): #Clears all textboxes
     #Clears the text in all textboxes
     self.txt_fname.delete(0,END)
     self.txt_lname.delete(0,END)
@@ -223,8 +222,7 @@ def onClear(self):
     self.txt_email.delete(0,END)
     self.txt_ccourse.delete(0,END)
 
-def onRefresh(self):
-    #Populates listbox with updated dB values
+def onRefresh(self): #Populates listbox with updated dB values
     self.lstList1.delete(0,END)
     conn = sqlite3.connect('student_list.db')
     with conn:
@@ -233,7 +231,7 @@ def onRefresh(self):
         count = cursor.fetchone()[0]
         i = 0
         while i < count:
-            cursor.execute("""SELECT col_fullname FROM tbl_studentList""")
+            cursor.execute("""SELECT col_fullname || ', ' || col_phone || ', ' || col_email || ', ' || col_course FROM tbl_studentList""") #Enables the Listbox to show all these elements in the Student List 
             varList = cursor.fetchall()[i]
             for item in varList:
                 self.lstList1.insert(0,str(item))
