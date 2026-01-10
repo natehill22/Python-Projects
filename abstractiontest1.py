@@ -37,18 +37,15 @@ class Crumpet(FlatCake):
     def tasteGood(self):
         return "Wow. So good."
 
+#List of child functions, for more effecient printing
+flatcakes = [DutchBaby(), Johnnycake(), Crumpet()]
+
 #Object creation of child classes using abstract and regular/concrete methods
-db = DutchBaby()
-print(db.distFeature()) #Redefined-through-child-class parent class' abstract method 
-print(db.cook()) #Parent class' regular/concrete method
-print(db.tasteGood) #Redefined-through-child-class parent class' abstract property
+for cake in flatcakes:
+    print(cake.distFeature()) #Child implementation of abstract method
+    print() #Spacing
+    print(cake.cook()) #Parent regular/concrete method
+    print() #Spacing
+    print(cake.tasteGood) #Child implementation of abstract property
+    print("-" * 40)
 
-jc = Johnnycake()
-print(jc.distFeature())
-print(jc.cook())
-print(jc.tasteGood)
-
-crump = Crumpet()
-print(crump.distFeature())
-print(crump.cook())
-print(crump.tasteGood)
