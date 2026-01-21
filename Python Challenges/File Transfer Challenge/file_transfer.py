@@ -4,6 +4,7 @@ import tkinter.filedialog
 import os
 import shutil
 from datetime import datetime, timedelta
+import logging
 
 
 class ParentWindow(Frame):
@@ -71,9 +72,18 @@ class ParentWindow(Frame):
             file_mod_timestamp = datetime.fromtimestamp(crude_mod_timestamp) #Formats that timestamp to match the other datetime formats
             current_time = datetime.now() #Create a variable for the current time
             one_day_ago = current_time - timedelta(days = 1) #Creates a variable for exactly 24 hours ago
-            if file_mod_timestamp < current_time and file_mod_timestamp > one_day_ago: #If the selected file timestamp is between the current time and 1 day ago, 
-                shutil.move(source + '/' + i, destination) #Moves each file from source to destination
-                print(i + ' was successfully transferred.')
+            if file_mod_timestamp < current_time and file_mod_timestamp > one_day_ago: #If the selected file timestamp is between the current time and 1 day ago,
+                try: #Allows error messaging to be shown if there's an issue
+                    shutil.move(source + '/' + i, destination) #Moves each file from source to destination
+                    print(i + ' was successfully transferred.')
+                except Exception as e: #If an error message is triggered
+                    print(f'An error occurred: {e}') #Print the error message to the console
+                    logging.basicConfig(
+                        filename='file_transfer_errors.log', #Create a log file
+                        level=logging.ERROR, #Ensure that only errors (or worse) get written to the log file
+                        format='%(asctime)s:%(levelname)s:%(name)s:%(message)s' #Write error time, text name of the log level, name (of logger used), and actual log message to the text file
+                    )
+                    logging.error("An error occurred: %s", e) #Calls the logging functionality
             else: #Otherwise print an alternative message
                 print('All new files (added within the last day) have been transferred. If your file has not been moved, it will need to be modified. ')
 
@@ -87,3 +97,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     App = ParentWindow(root)
     root.mainloop()
+    logger = logging.getLogger(__name__)

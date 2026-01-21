@@ -51,6 +51,8 @@ class ParentWindow(Frame):
     #Gives user-entered text (with minimal styling) in HTML format to a new tab in the web browser
     def CustomHTML(self):
         customText = self.lbl_customText.get() #Gets text from within the Entry field and sets it to a variable
+        if customText == "": #Protects against empty submissions by auto-filling a helpful message
+            customText = "You should probably enter some text before submitting..."
         htmlFile = open("index.html", "w") 
         customContent = "<html>\n<body style='display: flex;background-color: blue;'>\n<h1 style='margin: auto; color: yellow;'>" + customText + "</h1>\n</body>\n</html>" #Places user text in htmlContent and adds minimal styling
         htmlFile.write(customContent)
