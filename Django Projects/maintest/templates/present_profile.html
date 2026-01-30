@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Just a page{% endblock %}
+{% block header %}Edit a Profile:{% endblock %}
+
+{% block content %}
+
+
+<form name="profileForm" method="POST" action="../details/">
+    <table>
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {{ form.as_table }}
+    </table>
+    <button type="submit">SAVE</button>
+    <button type="button"><a href="../{{ form.pk }}delete/">DELETE</a></button>
+    <button type="button"><a href="{% url 'home' %}">CANCEL</a></button>
+
+</form>
+
+
+
+{% endblock %}

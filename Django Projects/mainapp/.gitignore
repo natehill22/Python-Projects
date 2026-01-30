@@ -1,0 +1,17 @@
+#Virtual Environment
+django_env/
+
+#SECRET KEY
+.env
+
+#JetBrains IDEs
+.idea/
+
+#SQLite Database file
+*.sqlite3
+
+#Byte-compiled files
+__pycache__/
+*.pyc
+
+

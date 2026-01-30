@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+{% block header %}Welcome to the Homepage!{% endblock %}
+
+{% block content %}<h1>Welcome to my world, {{ user | title }}.</h1>
+{% for name in names %}
+    <ul>
+        <li> {{ name.title }} {{ name.firstname }} {{ name.lastname }}</li>
+    </ul>
+{% endfor %}
+<form name="profileForm" method="POST" action="">
+    {% csrf_token %}
+    <label for="profile_id">Select a profile from the list:<br></label>
+    <select id="profile_id" name="menu" onChange="top.location.href=this.options[this.selectedIndex].value;">
+
+    {% for profile in names %}
+        <option value="../{{ profile.pk }}/details/">{{ profile.firstname }} {{ profile.lastname }}</option>
+    {% endfor %}
+    </select>
+    <a href="{% url 'createRecord' %}"><button type="button" class="btn">Add Profile</button></a>
+</form>
+</div>
+
+{% endblock %}
