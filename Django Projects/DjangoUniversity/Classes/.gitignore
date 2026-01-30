@@ -1,0 +1,15 @@
+#Virtual Environment
+django_env/
+.venv/
+
+#SECRET KEY
+.env
+
+#JetBrains IDEs
+.idea/
+
+#Byte-compiled files
+__pycache__/
+*.pyc
+
+
