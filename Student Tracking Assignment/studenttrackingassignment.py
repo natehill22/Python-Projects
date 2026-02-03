@@ -106,7 +106,7 @@ def first_run(self): #Preloads the database table with a default user to avoid a
     conn.close()
 
 
-def count_records(cur): #Geta the count of records from the database table
+def count_records(cur): #Get a the count of records from the database table
     count = ""
     cur.execute("""SELECT COUNT(*) FROM tbl_studentList""")
     count = cur.fetchone()[0]

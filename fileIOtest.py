@@ -2,7 +2,7 @@
 #print(help(str))
 import os
 
-#print(os.getcwd())
+#print(os.getcwd()) #Returns the string representing the path of the current working directory
 
 fName = 'test.txt'
 
@@ -13,15 +13,15 @@ print(abPath)
 
 def writeData():
     data = '\nHello World!'
-    with open('test.txt', 'a') as f:
-        f.write(data)
+    with open('test.txt', 'a') as f: #Opens a file named test.txt in append mode
+        f.write(data) #Adds a new line of 'data'
         f.close()
 
 
 def openFile():
-    with open('test.txt', 'r') as f:
-        data = f.read()
-        print(data)
+    with open('test.txt', 'r') as f: #Opens a file named test.txt in read-only mode
+        data = f.read() #Reads the contents of the file
+        print(data) #Prints the read contents
         f.close()
 
 

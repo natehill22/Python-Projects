@@ -42,11 +42,11 @@ def balance(request, pk):
 #Renders the Transaction page when requested
 def transaction(request):
     form = TransactionForm(data=request.POST or None)  # Retrieves Transaction Form
-    if request.method == 'POST':  # Checks if request method is POST
-        if form.is_valid():  # Checks to see if the submitted form is valid and if so, saves the form
+    if request.method == 'POST':  #Checks if request method is POST
+        if form.is_valid():  #Checks to see if the submitted form is valid and if so, saves the form
             pk = request.POST['account'] #Retrieve which account the transaction was for
-            form.save()  # Saves the transaction form
-            return balance(request, pk)  # Returns user to that user's specific balance sheet
-    content = {'form': form}  # Saves form content to the template as a dictionary
-    return render(request, 'checkbook/AddTransaction.html', content)  # Adds content of form to page
+            form.save()  #Saves the transaction form
+            return balance(request, pk)  #Returns user to that user's specific balance sheet
+    content = {'form': form}  #Saves form content to the template as a dictionary
+    return render(request, 'checkbook/AddTransaction.html', content)  #Adds content of form to page
 

@@ -109,7 +109,7 @@ class Woodlouse(Crustacean):
         return eating
     
     def scuttle(self):
-        move = "\nWoodlice move around by scuttling over terrain or swimming through water."
+        move = "\nWoodlice move around by scuttling over terrain."
         return move
 
     #Child-specific method
