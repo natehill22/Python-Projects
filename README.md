@@ -2,7 +2,7 @@
 This repository is for my (Nathaniel Hill's) Tech Academy Python projects. The projects within this folder were used primarily for learning and practicing new Python concepts. Many modules were used in this section such as Django, Tkinter or SQLite3.
 
 ## Projects:
-- [Django Checkbook (Django)](Django Projects/Django_Checkbook_Project/BlueBirdBanking)
+- [Django Checkbook (Django)](./Django Projects/Django_Checkbook_Project/BlueBirdBanking)
 - [MainApp Project (Django)](/Django Projects/mainapp)
 - [Phonebook App Demo (Tkinter)](/PhoneBook Application)
 - [Student Tracking Assignment (Tkinter)](/Student Tracking Assignment)
