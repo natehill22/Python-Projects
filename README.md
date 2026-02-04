@@ -2,20 +2,20 @@
 This repository is for my (Nathaniel Hill's) Tech Academy Python projects. The projects within this folder were used primarily for learning and practicing new Python concepts. Many modules were used in this section such as Django, Tkinter or SQLite3.
 
 ## Projects:
-- [Django Checkbook (Django)](./Django Projects/Django_Checkbook_Project/BlueBirdBanking)
-- [MainApp Project (Django)](/Django Projects/mainapp)
-- [Phonebook App Demo (Tkinter)](/PhoneBook Application)
-- [Student Tracking Assignment (Tkinter)](/Student Tracking Assignment)
-- [File Transfer (Tkinter)](/Python Challenges/File Transfer Challenge)
-- [Webpage Generator (Tkinter)](/Python Challenges/WebPage Generator)
-- [Tkinter Script GUI Challenge (Tkinter)](/Python Challenges/tkinterscriptGUIchallenge.py)
-- [Polymorphism Assignment](/Polymorphism Submission Assignment)
+- [Django Checkbook (Django)](/Django%20Projects/Django_Checkbook_Project/BlueBirdBanking)
+- [MainApp Project (Django)](/Django%20Projects/mainapp)
+- [Phonebook App Demo (Tkinter)](/PhoneBook%20Application)
+- [Student Tracking Assignment (Tkinter)](/Student%20Tracking%20Assignment)
+- [File Transfer (Tkinter)](/Python%20Challenges/File%20Transfer%20Challenge)
+- [Webpage Generator (Tkinter)](/Python%20Challenges/WebPage%20Generator)
+- [Tkinter Script GUI Challenge (Tkinter)](/Python%20Challenges/tkinterscriptGUIchallenge.py)
+- [Polymorphism Assignment](/Polymorphism%20Submission%20Assignment)
 - [Abstraction Assignment](/abstractiontest1.py)
 - [Encapsulation Assignment](/encapsulationtest1.py)
-- [Inheritance Assignment](/Inheritance Submission Assignment)
-- [Datetime Challenge](/Python Challenges/datetimechallenge.py)
-- [Databases & Python Challenge](/Python Challenges/databases%26pythonchallenge.py)
-- [Nice or Mean Game](/Nice or Mean Game)
+- [Inheritance Assignment](/Inheritance%20Submission%20Assignment)
+- [Datetime Challenge](/Python%20Challenges/datetimechallenge.py)
+- [Databases & Python Challenge](/Python%20Challenges/databases%26pythonchallenge.py)
+- [Nice or Mean Game](/Nice%20or%20Mean%20Game)
 
 
 Note: Both for security reasons and to avoid large and/or redundant uploads, all Django projects have been uploaded to GitHub in the following format: only Project and App files have been uploaded; all Virtual Environment, byte-compiled, cache, and Jetbrains' IDE files have NOT been uploaded. The Secret_Key has similarly been excluded from upload. All virtual environment settings needed to reproduce the environment are in the requirements.txt file. The databases for both mainapp and maintest was also not uploaded--the data within each was unimportant.
