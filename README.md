@@ -1,63 +1,62 @@
 # Python-Projects
-This repository is for my (Nathaniel Hill's) Tech Academy Python projects. The projects within this folder were used primarily for learning and practicing new Python concepts. Many modules were used in this section such as Tkinter or SQLite3.
+This repository is for my (Nathaniel Hill's) Tech Academy Python projects. The projects within this folder were used primarily for learning and practicing new Python concepts. Many modules were used in this section such as Django, Tkinter or SQLite3.
 
 ## Projects:
-- 
--Django projects: (Both for security reasons and to avoid large and/or redundant uploads, all Django projects have been uploaded to github in the following format: only Project and App files have been uploaded; all Virtual Environment, byte-compiled, cache, and Jetbrains' IDE files have NOT been uploaded. The Secret_Key has similarly been excluded from upload to the public repository. All virtual environment settings needed to reproduce the environment are in the requirements.txt file. NOTE: The databases for both mainapp and maintest was also not uploaded--the data within each was unimportant.)
-    -Django Checkbook (This Django project was to create an banking website/online checkbook type of experience. Users can create an account, use that account (through foreign keys) to look through recent transactions and add new withdrawal or deposit transactions to show an updated total (as well as transaction dates, amounts, or descriptions). This has a functional menu, uses SQL through Django code, ModelForm-based forms, and has a full set of Django enhanced HTML and CSS.) !!
-    -mainapp (This Django project was used to teach us how to create and use the Django framework to build-out data-driven website. In this tutorial, I leared how to make use of the built-in admin portal, use models to import data into the database, how to tie in templates and static files (to determine what is seen by users), how to use urls to create connected pages, and more. By the end, I had fully enabled and utilized CRUD functionality throughout the GUI. I furter practiced these skills in the significantly less aesthetically pleasing maintest project [in the same Django folders].) !!
--inheritanceSubAssignment (demonstrates inheritance through several child classes with a parent (Books)) !!
--Nice or Mean Game (focused on passing variables from function to function, returns, lots of conditionals, and added sound effects) !!
--Phonebook (demonstrating tkinter, oop, inheritance) !!
--polymorphismsubmissionassignmnet (polymorphism, inheritance, wildcards, inherited and child-specific methods) !!
--studenttrackingassignment (tkinter, gui, sql, validations) !!
--databases&python challenge (SQL work within python, includes :memory:, execute many, updates, filters)
--Python Challenges - web_page_generator (tkinter, interacting with HTML to make a default and custom html page)
--file_transfer.py (tkinter, creating a program that transfers files from a source folder to a destination folder, it also checks for error messages) !!
--datetimechallenge (datetime and timezone work, date formatting, operating hours) !!
--tkinterscriptGUIchallenge (tkinter, gui creation, making buttons functional and entry boxes tie to button selection for files and folders)
+- [Django Checkbook (Django)](/Django Projects/Django_Checkbook_Project/BlueBirdBanking)
+- [MainApp Project (Django)](/Django Projects/mainapp)
+- [Phonebook App Demo (Tkinter)](/PhoneBook Application)
+- [Student Tracking Assignment (Tkinter)](/Student Tracking Assignment)
+- [File Transfer (Tkinter)](/Python Challenges/File Transfer Challenge)
+- [Webpage Generator (Tkinter)](/Python Challenges/WebPage Generator)
+- [Tkinter Script GUI Challenge (Tkinter)](/Python Challenges/tkinterscriptGUIchallenge.py)
+- [Polymorphism Assignment](/Polymorphism Submission Assignment)
+- [Abstraction Assignment](/abstractiontest1.py)
+- [Encapsulation Assignment](/encapsulationtest1.py)
+- [Inheritance Assignment](/Inheritance Submission Assignment)
+- [Datetime Challenge](/Python Challenges/datetimechallenge.py)
+- [Databases & Python Challenge](/Python Challenges/databases%26pythonchallenge.py)
+- [Nice or Mean Game](/Nice or Mean Game)
 
 
--scriptassignment.py (returning all txt values within a folder and their timestamps, os path work, datetime, small)
--encapsulation1 (encapsulation practice, uses protected and private attrubutes)
--abstractiontest1 (using abstract methods and properties implemented through the child classes and parent/regular methods) !!
+Note: Both for security reasons and to avoid large and/or redundant uploads, all Django projects have been uploaded to GitHub in the following format: only Project and App files have been uploaded; all Virtual Environment, byte-compiled, cache, and Jetbrains' IDE files have NOT been uploaded. The Secret_Key has similarly been excluded from upload. All virtual environment settings needed to reproduce the environment are in the requirements.txt file. The databases for both mainapp and maintest was also not uploaded--the data within each was unimportant.
+
+## Django Checkbook (Django)
+This Django project was to create a banking website/online checkbook type of experience. Users can create an account, use that account (through foreign keys) to look through recent transactions and add new withdrawal or deposit transactions to show an updated total (as well as transaction dates, amounts, or descriptions). This has a functional menu, uses SQL through Django code, ModelForm-based forms, and has a full set of Django enhanced HTML and CSS.
+
+## MainApp Project (Django)
+This Django project was used to teach us how to create and use the Django framework to build-out a data-driven website. In this tutorial, I leared how to make use of the built-in admin portal, use models to import data into the database, how to tie-in templates and static files (to determine what is seen by users), how to use URLs to create connected pages, and more. By the end, I had fully enabled and utilized CRUD functionality throughout the GUI. I further practiced these skills in the significantly less aesthetically-pleasing maintest project (in the same Django folders).
+
+## Phonebook App Demo & Student Tracking Assignment (Tkinter)
+These two projects are similar, and both showcase my comfort with using Tkinter. Tkinter GUI creation, database creation (and population), and enabling CRUD functionality were the main focuses of these projects. I utilized Object-Oriented Programming, importing modules (like sqlite3, regex, messagebox, and other .py files), lambda (anonymous) functions, custom validations, *args, and **kwargs. The Student Tracking Assignment differs from the Phonebook App by placing all code onto one page, having an additional Course field, GUI changes, and all student data, comma-separated, showing within the Listbox for selection.
+
+## File Transfer (Tkinter)
+This project was a challenge given to use Tkinter to build a simple file-transfer app that would, upon button press, move all the files in one selectable Source folder into another selectable Destination folder. As well as the file dialog module, I had to utilize os, shutil, datetime, timedelta and logging modules to accomplish this task; I had to ensure that only files modified within the last 24 hours would be transferred out of the Source folder. I also built checks to log any error messages encountered in order to make it more robust.
+
+## Webpage Generator (Tkinter)
+This project was a challenge given to build a Tkinter GUI that would, upon button press, open HTML pages in the default browser. The first button would show preloaded HTML in the browser page, and the second button would get the text placed in the entry field and load that, within HTML, onto the browser page. As well as building a Tkinter GUI, I learned how to use the webbrowser module in this assignment.
+
+## Tkinter Script GUI Challenge (Tkinter)
+This project was a challenge given to simply re-create a Tkinter GUI based off a picture. Not satisfied with completing the challenge, I went further to make the buttons functional and tied them to the given entry boxes based upon the users' file or folder selection. I had to learn how to use the file dialog module in order to acheive this, which was fun.
+
+## Polymorphism Assignment
+This project was an opportunity to showcase my understanding of polymorphism and inheritance. I used parent and child classes and parent and child-specific attributes and methods to demonstrate the difference between inherited attributes/methods and child-speficic ones. I then created a list and looped through it to print all attributes and methods of the parent class through all its child classes with the child-specific methods conditionally included.
+
+## Abstraction Assignment
+This project was used to get experience with the concept of abstraction. Abstract Base Class, abstract methods, abstract properties, and regular/concrete methods were used to implement functionality through the child classes. I then created a list and looped through it to efficiently print all child methods and properties.
+
+## Encapsulation Assignment
+This project was used to get experience with the concept of encapsulation. In this example, encapsulation is used to show that private attributes can be hidden if desired. Protected attrubutes can also be used, but they are more of a marker to other developers that it should be treated as internal to the class and its subclasses.
+
+## Inheritance Assignment
+This project demonstrates inheritance through parent attributes and methods. Several child classes that had both inheritited parent and child-only attributes were defined within the child class (and some of these were set to default values). The super method was utilized here to access the properties of the parent class.
+
+## Datetime Challenge
+This project was a challenge given to build a program that returns the specific time in all 3 branches of a store in 3 different time zones. More than that, the current (and accurate) open/closed state of each branch should be returned with their local time. I had to import and utilize the datetime, time, and ZoneInfo modules, make use of date formatting, and use conditional statements to get to the solution. I love timezone work, so this was a blast for me.
+
+## Databases & Python Challenge
+This project was a challenge given to create, connect to, and make use of a memory-only database to build a table, populate that table with a pre-defined list, update the data, and then return a filtered list with a helpful string prefix. Python's SQLite3 module (and its many methods) was used to get the solution.
+
+## Nice or Mean Game
+This was one of the first presented Python projects and it was focused on passing and returning variables from function to function in order to produce a game. I personalized it by importing the playsound module and adding royalty-free sound effects that interact with the game at different times.
 
 
-
-
-
-## Projects:
-- [Student Portfolio](https://natehill22.github.io/)
-- [Academy Cinemas](/Basic_HTML_and_CSS/Academy-Cinemas)
-- [Album Challenge (BootStrap)](/Basic_HTML_and_CSS/Introduction-to-Bootstrap)
-- [HTML Challenges](/Basic_HTML_and_CSS/HTML%20Challenges)
-- [Simple Recipes](/Basic_HTML_and_CSS/Simple-Recipes)
-- [The Pet Shop](/Basic_HTML_and_CSS/The_Pet_Shop_Website)
-- [One Page Website](/Basic_HTML_and_CSS/One-Page%20Website)
-- [Grace Hopper Project](/Basic_HTML_and_CSS/Grace%20Hopper/HTML%20CSS)
-
-
-
-## Student Portfolio
-This page is the culmination of all the HTML/CSS learning we've done so far. It is an active portfolio webpage for me as a developer. It's styled with CSS and contains a navbar, footer, form, video, image containers and much more. 
-
-## Academy Cinemas
-This page is an example movie website that utilized Bootstrap. It contains many Bootstrap elements and custom adjustments including form, cards, drowdowns, navbar, footer and internal links. 
-
-## Album Challenege (Bootstrap)
-This page is the product of an assignment to utilize a Bootstrap template to design and display a page; I chose to make an Album about giant flightless birds. This page has no stylesheet--only Bootstrap library elements. Working with limitations in that existing framework, I relied solely on existing Bootstrap elements to help me fulfill my vision.   
-
-## HTML Challenges
-This page is the result of a series of challenges that I chose to place upon a singular page. Styled with CSS, it contains a footer, navbar, image and video with text overlay, images with varying filters and columns, and a table.  
-
-## Simple Recipes
-This page displays more complicated styling; it was intended to be an example recipe-based website that shares with the community. Styled with CSS, it focuses on recipe cards that flip to reveal cooking deatils. It contains a footer, form, internal links, and columned image containers, transforming elements, and more complicated navbar. 
-
-## The Pet Shop
-This page is an example pet shop website; it was created to teach about linking, image and video, filter overlays, columns forms, and footers. It's been styled with CSS and contains two pages with shared styling. 
-
-## One Page Website
-This page is a result of my desire to showcase the nuance between different kinds of baked goods in the "cobbler" family. It's been styled with CSS and focused on topnav, footer, background image, form, and video/images. 
-
-## Grace Hopper Project
-This page comes from a lesson on how to learn to find all elements necessary to make a webpage. Styled with CSS, it contains a header, image, links, and much text (and text formatting). 
